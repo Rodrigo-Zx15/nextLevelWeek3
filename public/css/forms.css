@@ -71,6 +71,10 @@ fieldset + fieldset{
     padding: .6rem;
     cursor: pointer;
 }
+
+.new-upload + .new-upload{
+    margin-top: 2.4rem;
+}
 .input-block input{
     height: 6.4rem;
     padding: 0 1.6rem;
