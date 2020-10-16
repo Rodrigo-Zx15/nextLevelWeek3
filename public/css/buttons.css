@@ -10,6 +10,7 @@
     transition:background-color 200ms;
     border-radius: 1.6rem;
     color:#EDFFF6;
+    text-decoration: none;
 }
 
 .primary-button:hover{

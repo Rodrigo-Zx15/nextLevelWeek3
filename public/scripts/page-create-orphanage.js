@@ -74,7 +74,7 @@ function alternarAtivo(event){
     
     
     //trocar o hidden
-    const input = document.querySelector('[name="abre-fds"]');
+    const input = document.querySelector('[name="abreFds"]');
     //verificar o botão que foi clicado
     input.value = button.dataset.value;
     //console.log(input.value)
@@ -86,4 +86,13 @@ function alternarAtivo(event){
     //colocar a .active 
     button.classList.add('active');
     
+}
+function validate(event){
+    const lat = document.querySelector('[name="latitude"]');
+    const lon = document.querySelector('[name="longitude"]');
+    if(lat.value == "" && lon.value == ""){
+        event.preventDefault();
+        alert("Selecione um ponto no mapa...!");
+    }
+    return;
 }

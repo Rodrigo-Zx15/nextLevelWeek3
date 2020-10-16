@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exemplo Orfanato | Happy</title>
+    <title>Novo orfanato | Happy</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -35,14 +35,14 @@
       
       </aside>
       <main class="animate-appear with-sidebar">
-          <form action="">
+          <form action="save-orphanage" method="post" onsubmit="validate(event)">
             <fieldset>
               <legend>Dados</legend>
 
               <div class="map-container">
                 <div id="mapid">
-                  <input type="hidden" name="latitude" required> 
-                  <input type="hidden" name="longitude" required>
+                  <input type="hidden" name="latitude"> 
+                  <input type="hidden" name="longitude">
                 </div>
                  
                 <footer>
@@ -73,7 +73,7 @@
 
                   <div class="new-upload">
 
-                    <input name="imgs" placeholder="Cole aqui o link da foto!">
+                    <input name="imgs" placeholder="Cole aqui o link da foto!" required type="url">
                     <span onclick="deletarFoto(event)">
                       <img src="/images/red-x.svg" alt="remover foto">
                     </span>
@@ -99,8 +99,8 @@
                 </div>
 
                 <div class="input-block">
-                  <label for="abre-fds">Abre fim de semana?</label>
-                  <input id="abre-fds" type="hidden" name="abre-fds" value="1" required>
+                  <label for="abreFds">Abre fim de semana?</label>
+                  <input id="abreFds" type="hidden" name="abreFds" value="1" required>
                 
                   <div class="button-select">
                     <button data-value="1" 

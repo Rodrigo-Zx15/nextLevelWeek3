@@ -6,7 +6,13 @@ const options = {
     scrollWheelZoom: false,
     zoomControl: false
 }
-const map = L.map('mapid', options).setView([-23.7108781,-46.7940031], 15);
+
+const spanLat = document.querySelector('#mapid span');
+const lat = spanLat.dataset.lat;
+const spanLng = document.querySelector('#mapid span');
+const lng = spanLat.dataset.longitude;
+
+const map = L.map('mapid', options).setView([lat,lng], 15);
 
 //cria a camada 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',).addTo(map);
@@ -21,8 +27,13 @@ const icon = L.icon({
 
 
 
-//markers daora    
-L.marker([-23.7108781,-46.7940031],{icon:icon}).addTo(map)
+
+//markers daora 
+
+
+
+
+L.marker([lat,lng],{icon:icon}).addTo(map)
     
 function selectImage(event){
     const button = event.currentTarget;

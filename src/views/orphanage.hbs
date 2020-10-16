@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exemplo Orfanato | Happy</title>
+    <title>{{orphanage.name}} | Happy</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -36,64 +36,58 @@
       </aside>
       <main class="animate-appear with-sidebar">
         <div class="orphanage-details">
-          <img src="/images/home.jpg" alt="Exemplo Orfanato">
+          <img src="{{orphanage.firstImage}}" alt="{{orphanage.name}}">
           <div class="images">
+            {{#each orphanage.imgs}}
             <button class="active" type="button">
-              <img src="https://source.unsplash.com/random?id=1" alt="Exemplo Orf">
+              <img src="{{this}}" alt="{{orphanage.name}}">
             </button>
-
-            <button onclick="selectImage(event)" type="button">
-              <img src="https://source.unsplash.com/random?id=2" alt="Exemplo Orf">
-            </button>
-            <button onclick="selectImage(event)" type="button">
-              <img src="https://source.unsplash.com/random?id=3" alt="Exemplo Orf">
-            </button>
-
-            <button onclick="selectImage(event)" type="button">
-              <img src="https://source.unsplash.com/random?id=4" alt="Exemplo Orf">
-            </button>
-
-            <button onclick="selectImage(event)" type="button">
-              <img src="https://source.unsplash.com/random?id=5" alt="Exemplo Orf">
-            </button>
-            
-            <button onclick="selectImage(event)" type="button">
-              <img src="https://source.unsplash.com/random?id=6" alt="Exemplo Orf">
-            </button>
-
+            {{/each}}
           </div>
           <div class="orphanage-details-content">
-            <h1>Exemplo Orfanato</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+            <h1>{{orphanage.name}}</h1>
+            <p>{{orphanage.sobre}} </p>
             
             <div class="map-container">
-              <div id="mapid"></div>
+              <div id="mapid">
+                <span
+                 data-lat="{{orphanage.lat}}"
+                 data-longitude="{{orphanage.longitude}}"
+                ></span>
+              </div>
               <footer>
-                <a href="">Ver rotas</a>
+                <a 
+                target="_blank"
+                href="https://maps.google.com/mobile?q={{orphanage.lat}},{{orphanage.longitude}}&z=15">Ver rotas</a>
               </footer>  
             </div>
             <hr>
             <h2>Instruções para visita</h2>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quo saepe</p>
+            <p>{{orphanage.instrucoes}}</p>
           
             <div class="open-details">
 
               <div class="hour">
                 <img src="/images/clock.svg" alt="Horários">
-                Horário de visitas das 8h às 18h
+                {{orphanage.horarios}}
               </div>
-
-              <div class="open-on-weekends">
+              {{#if orphanage.abreFds}}
+              <div class="open-on-weekends open">
                 <img src="/images/info.svg" alt="informações">
-                Atendemos fim de semana
+                Abrimos fim de semana
               </div>
-              
+              {{else}}
+              <div class="open-on-weekends closed">
+                <img src="/images/info-red.svg" alt="informações">
+                Não abrimos no fim de semana.
+              </div>
+              {{/if}}
             </div>
-            <button type="button" class="primary-button">
+            <a href="https://api.whatsapp.com/send/?l=pt_BR&phone={{orphanage.whatsapp}}" target="__blank" type="button" class="primary-button">
               <img src="/images/whatsapp.svg" alt="Chamar no wpp">
               Entrar em contato
-            </button> 
+            </a> 
           </div>
         </div>
       </main>
